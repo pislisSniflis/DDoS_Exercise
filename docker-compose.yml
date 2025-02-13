@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  target:
+    build:
+      context: ./target
+    ports:
+      - "8080:80"
+    networks:
+      - ddos-net
+
+  attacker:
+    build:
+      context: ./attacker
+    stdin_open: true
+    tty: true
+    networks:
+      - ddos-net
+
+networks:
+  ddos-net:
+    driver: bridge
