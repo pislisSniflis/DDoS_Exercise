@@ -1,4 +1,3 @@
-FROM nginx:latest
-RUN apt install -y net-tools
-COPY ./index.html /usr/share/nginx/html/index.html
-EXPOSE 80
+FROM kalilinux/kali-rolling:latest
+RUN apt update && apt install -y hping3 slowloris kali-linux-headless net-tools
+CMD ["/bin/bash"]
